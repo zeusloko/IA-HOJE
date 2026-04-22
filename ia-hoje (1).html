@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Hoje — Inteligência Artificial em Português</title>
+<meta name="description" content="Tudo sobre Inteligência Artificial: ferramentas, tutoriais, novidades e como usar IA para ganhar dinheiro. Atualizado diariamente.">
+<meta name="keywords" content="inteligência artificial, IA, ChatGPT, Claude, Gemini, ferramentas IA, ganhar dinheiro com IA, IA Brasil">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<!-- =====================================================
+     ESPAÇO PARA GOOGLE ADSENSE
+     Substitua os blocos abaixo pelo seu código AdSense
+     ===================================================== -->
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --accent: #00e5ff;
+    --accent2: #ff3cac;
+    --accent3: #7b2fff;
+    --text: #e8e8f0;
+    --muted: #7070a0;
+    --card-border: rgba(0,229,255,0.12);
+    --glow: 0 0 40px rgba(0,229,255,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ---- GRID NOISE BACKGROUND ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -20%, rgba(123,47,255,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,229,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---- HEADER ---- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 clamp(16px, 5vw, 80px);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+  }
+
+  nav { display: flex; gap: 28px; }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  nav a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg) !important;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ---- AD BANNER ZONES ---- */
+  .ad-banner {
+    background: var(--surface);
+    border: 1px dashed rgba(0,229,255,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ad-leaderboard {
+    width: 100%;
+    height: 90px;
+    margin: 20px auto;
+    max-width: 728px;
+  }
+
+  .ad-rectangle {
+    width: 300px;
+    height: 250px;
+    flex-shrink: 0;
+  }
+
+  .ad-inline {
+    width: 100%;
+    height: 100px;
+    margin: 32px 0;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(60px, 10vw, 120px) clamp(16px, 5vw, 80px) 60px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.25);
+    color: var(--accent);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+    color: #000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 30px rgba(0,229,255,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,229,255,0.4); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 13px 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(0,229,255,0.05); }
+
+  /* ---- FEATURED CARD ---- */
+  .featured-article {
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--glow);
+    transition: transform 0.3s;
+  }
+  .featured-article:hover { transform: translateY(-4px); }
+
+  .feat-img {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(135deg, #1a0a2e 0%, #0a1a2e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .feat-body { padding: 20px; }
+
+  .feat-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .feat-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .feat-meta {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ---- MAIN LAYOUT ---- */
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 5vw, 80px) 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- SECTION HEADERS ---- */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--card-border) 0%, transparent 100%);
+  }
+
+  /* ---- ARTICLE CARDS ---- */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .article-card {
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .article-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,229,255,0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  .card-thumb {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+
+  .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+
+  .card-category {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cat-tools { color: #00e5ff; }
+  .cat-money { color: #ff3cac; }
+  .cat-news { color: #7b2fff; }
+  .cat-tutorial { color: #ffd93d; }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    flex: 1;
+  }
+
+  .card-excerpt {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .card-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 10px;
+    display: flex;
+    gap: 12px;
+  }
+
+  /* ---- LIST ARTICLES ---- */
+  .article-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .article-list-item {
+    display: flex;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    align-items: flex-start;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .article-list-item:hover {
+    border-color: rgba(0,229,255,0.25);
+    background: var(--surface2);
+  }
+
+  .list-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: rgba(0,229,255,0.15);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .list-content { flex: 1; }
+
+  .list-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 4px;
+  }
+
+  .list-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .list-meta { font-size: 0.72rem; color: var(--muted); }
+
+  /* ---- SIDEBAR ---- */
+  .sidebar { display: flex; flex-direction: column; gap: 28px; }
+
+  .sidebar-widget {
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .widget-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .trending-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .trending-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+  .trending-item:hover { opacity: 0.75; }
+
+  .trend-rank {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent);
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .trend-title {
+    font-size: 0.83rem;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  /* ---- NEWSLETTER ---- */
+  .newsletter {
+    background: linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(123,47,255,0.08) 100%);
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .newsletter h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .newsletter p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .nl-form { display: flex; flex-direction: column; gap: 10px; }
+
+  .nl-input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .nl-input::placeholder { color: var(--muted); }
+  .nl-input:focus { border-color: var(--accent); }
+
+  .nl-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .nl-btn:hover { opacity: 0.85; }
+
+  /* ---- TOOLS SECTION ---- */
+  .tools-section {
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .tool-chip {
+    background: var(--surface2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .tool-chip:hover {
+    border-color: rgba(0,229,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  .tool-emoji { font-size: 1.4rem; }
+  .tool-name { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; }
+  .tool-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+
+  .tool-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .badge-free { background: rgba(0,229,255,0.15); color: var(--accent); }
+  .badge-paid { background: rgba(255,60,172,0.15); color: var(--accent2); }
+  .badge-new  { background: rgba(123,47,255,0.2); color: #b39dff; }
+
+  /* ---- HIGHLIGHT BLOCK ---- */
+  .highlight-block {
+    background: linear-gradient(135deg, rgba(255,60,172,0.08) 0%, rgba(123,47,255,0.08) 100%);
+    border: 1px solid rgba(255,60,172,0.2);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .highlight-icon { font-size: 3rem; flex-shrink: 0; }
+
+  .highlight-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .highlight-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--card-border);
+    padding: 40px clamp(16px, 5vw, 80px);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand p {
+    font-size: 0.83rem;
+    color: var(--muted);
+    max-width: 260px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 0.83rem;
+    color: var(--text);
+    text-decoration: none;
+    margin-bottom: 8px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .footer-col a:hover { opacity: 1; }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ---- MODAL ---- */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), var(--glow);
+    animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-header {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,60,172,0.3); }
+
+  .modal-body { padding: 28px 32px 32px; }
+
+  .modal-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .modal-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .modal-content {
+    font-size: 0.93rem;
+    line-height: 1.8;
+    color: #c8c8e0;
+  }
+
+  .modal-content p { margin-bottom: 16px; }
+  .modal-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 24px 0 10px;
+  }
+  .modal-content ul { padding-left: 20px; margin-bottom: 16px; }
+  .modal-content li { margin-bottom: 6px; }
+
+  .modal-cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+    color: #000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+  }
+  .modal-cta-btn:hover { opacity: 0.85; }
+
+  /* ---- TOAST NOTIFICATION ---- */
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--surface2);
+    border: 1px solid rgba(0,229,255,0.3);
+    color: var(--text);
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    z-index: 2000;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+    opacity: 0;
+    white-space: nowrap;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .delay-3 { animation-delay: 0.3s; opacity: 0; }
+
+  /* ---- THUMBNAIL GRADIENTS ---- */
+  .thumb-1 { background: linear-gradient(135deg, #0d1b3e, #001f5b); }
+  .thumb-2 { background: linear-gradient(135deg, #1a0a2e, #3b0d6e); }
+  .thumb-3 { background: linear-gradient(135deg, #0d2e20, #0a3d2e); }
+  .thumb-4 { background: linear-gradient(135deg, #2e1a00, #3d2600); }
+  .thumb-5 { background: linear-gradient(135deg, #2e0d1a, #3d0a1f); }
+  .thumb-6 { background: linear-gradient(135deg, #0a1a2e, #001433); }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .hero, .main-container { grid-template-columns: 1fr; }
+    .featured-article { display: none; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-dot"></div>
+      IA Hoje
+    </a>
+    <nav>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#tutoriais">Tutoriais</a>
+      <a href="#noticias">Notícias</a>
+      <a href="#ganhar">Ganhar com IA</a>
+      <a href="#newsletter" class="nav-cta">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Ad Leaderboard Top -->
+<div style="text-align:center; padding: 12px 16px; position:relative; z-index:1;">
+  <div class="ad-banner ad-leaderboard" id="ad-top">
+    <!-- Google AdSense: insira seu código aqui -->
+    📢 Anúncio 728×90 — Google AdSense
+  </div>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div>
+    <div class="hero-badge fade-up">
+      <span>🔥</span> Em alta agora
+    </div>
+    <h1 class="fade-up delay-1">
+      O portal brasileiro de<br><span>Inteligência Artificial</span>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Ferramentas, tutoriais e estratégias para você usar IA no trabalho, nos negócios e na vida. Atualizado todo dia com o que realmente importa.
+    </p>
+    <div class="hero-cta-group fade-up delay-3">
+      <a href="#artigos" class="btn-primary">Ver artigos →</a>
+      <a href="#ferramentas" class="btn-secondary">Top ferramentas</a>
+    </div>
+  </div>
+
+  <!-- Featured Side Card -->
+  <div class="featured-article fade-up delay-2">
+    <div class="feat-img thumb-2">🤖</div>
+    <div class="feat-body">
+      <div class="feat-tag">🔥 Destaque</div>
+      <div class="feat-title">ChatGPT vs Gemini vs Claude: qual IA usar em 2026?</div>
+      <div class="feat-meta">15 min de leitura · Hoje</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+<div class="main-container">
+
+  <!-- ─── CONTENT COLUMN ─── -->
+  <main>
+
+    <!-- TOOLS SECTION -->
+    <section id="ferramentas" class="tools-section">
+      <div class="section-header">
+        <h2 class="section-title">🛠️ Melhores ferramentas de IA</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="tools-grid">
+        <a href="https://chat.openai.com" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">🧠</div>
+          <div class="tool-name">ChatGPT</div>
+          <div class="tool-desc">O mais famoso. Ótimo para textos, código e análise.</div>
+          <span class="tool-badge badge-paid">Pago</span>
+        </a>
+        <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">⚡</div>
+          <div class="tool-name">Claude</div>
+          <div class="tool-desc">Melhor para documentos longos e raciocínio complexo.</div>
+          <span class="tool-badge badge-free">Grátis</span>
+        </a>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">🌟</div>
+          <div class="tool-name">Gemini</div>
+          <div class="tool-desc">Integrado ao Google. Ótimo para pesquisa e dados.</div>
+          <span class="tool-badge badge-free">Grátis</span>
+        </a>
+        <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">🎨</div>
+          <div class="tool-name">Midjourney</div>
+          <div class="tool-desc">Geração de imagens de altíssima qualidade.</div>
+          <span class="tool-badge badge-paid">Pago</span>
+        </a>
+        <a href="https://sora.com" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">🎬</div>
+          <div class="tool-name">Sora</div>
+          <div class="tool-desc">Vídeos gerados por IA. Revolução no audiovisual.</div>
+          <span class="tool-badge badge-new">Novo</span>
+        </a>
+        <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="tool-chip">
+          <div class="tool-emoji">🔊</div>
+          <div class="tool-name">ElevenLabs</div>
+          <div class="tool-desc">Clonagem de voz e narração realista em português.</div>
+          <span class="tool-badge badge-free">Grátis</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- INLINE AD -->
+    <div class="ad-banner ad-inline" id="ad-inline-1">
+      📢 Anúncio 100% largura — Google AdSense (insira seu código aqui)
+    </div>
+
+    <!-- ARTICLES GRID -->
+    <section id="artigos">
+      <div class="section-header">
+        <h2 class="section-title">📰 Artigos em destaque</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="articles-grid">
+        <a href="#" class="article-card" onclick="openModal('ganhar'); return false;">
+          <div class="card-thumb thumb-1">💰</div>
+          <div class="card-body">
+            <div class="card-category cat-money">Ganhar com IA</div>
+            <div class="card-title">10 formas de ganhar dinheiro com IA em 2026 (testadas)</div>
+            <div class="card-excerpt">De freelance a produtos digitais, veja o que está funcionando de verdade no mercado brasileiro.</div>
+            <div class="card-meta">
+              <span>📖 8 min</span>
+              <span>🕐 Hoje</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="article-card" onclick="openModal('chatgpt5'); return false;">
+          <div class="card-thumb thumb-2">🤖</div>
+          <div class="card-body">
+            <div class="card-category cat-tools">Ferramentas</div>
+            <div class="card-title">ChatGPT-5 chegou: o que mudou e o que você precisa saber</div>
+            <div class="card-excerpt">Análise completa do novo modelo com exemplos práticos para o dia a dia.</div>
+            <div class="card-meta">
+              <span>📖 6 min</span>
+              <span>🕐 2 dias atrás</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="article-card" onclick="openModal('prompts'); return false;">
+          <div class="card-thumb thumb-3">🎯</div>
+          <div class="card-body">
+            <div class="card-category cat-tutorial">Tutorial</div>
+            <div class="card-title">Como criar prompts perfeitos: guia definitivo em português</div>
+            <div class="card-excerpt">Aprenda as técnicas de prompt engineering que os profissionais usam e não ensinam.</div>
+            <div class="card-meta">
+              <span>📖 12 min</span>
+              <span>🕐 3 dias atrás</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="article-card" onclick="openModal('lei'); return false;">
+          <div class="card-thumb thumb-4">🚀</div>
+          <div class="card-body">
+            <div class="card-category cat-news">Notícias</div>
+            <div class="card-title">IA no Brasil: governo anuncia regulamentação para 2026</div>
+            <div class="card-excerpt">O que muda para empresas e usuários com a nova lei de inteligência artificial brasileira.</div>
+            <div class="card-meta">
+              <span>📖 5 min</span>
+              <span>🕐 4 dias atrás</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- INLINE AD 2 -->
+    <div class="ad-banner ad-inline" id="ad-inline-2">
+      📢 Anúncio — Google AdSense (insira seu código aqui)
+    </div>
+
+    <!-- HIGHLIGHT -->
+    <div class="highlight-block" style="cursor:pointer;" onclick="openModal('ganhar')">
+      <div class="highlight-icon">💡</div>
+      <div class="highlight-content">
+        <h3>Sabia que você pode ganhar R$3.000–R$15.000/mês com IA?</h3>
+        <p>Criadores de conteúdo, designers, programadores e até professores já estão monetizando ferramentas de IA. Veja nosso guia completo com passo a passo para o mercado brasileiro. <span style="color:var(--accent); font-weight:600;">Ler guia →</span></p>
+      </div>
+    </div>
+
+    <!-- TUTORIALS LIST -->
+    <section id="tutoriais">
+      <div class="section-header">
+        <h2 class="section-title">🎓 Tutoriais populares</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="article-list">
+        <a href="#" class="article-list-item" onclick="openModal('emails'); return false;">
+          <div class="list-num">01</div>
+          <div class="list-content">
+            <div class="list-cat">Tutorial • Iniciante</div>
+            <div class="list-title">Como usar o ChatGPT para escrever e-mails profissionais em minutos</div>
+            <div class="list-meta">📖 5 min · 🔥 12.4k leituras</div>
+          </div>
+        </a>
+        <a href="#" class="article-list-item" onclick="openModal('automacao'); return false;">
+          <div class="list-num">02</div>
+          <div class="list-content">
+            <div class="list-cat">Tutorial • Intermediário</div>
+            <div class="list-title">Automação com IA: como economizar 3 horas por dia no trabalho</div>
+            <div class="list-meta">📖 10 min · 🔥 9.1k leituras</div>
+          </div>
+        </a>
+        <a href="#" class="article-list-item" onclick="openModal('agente'); return false;">
+          <div class="list-num">03</div>
+          <div class="list-content">
+            <div class="list-cat">Tutorial • Avançado</div>
+            <div class="list-title">Crie um agente de IA personalizado para o seu negócio (sem código)</div>
+            <div class="list-meta">📖 15 min · 🔥 7.8k leituras</div>
+          </div>
+        </a>
+        <a href="#" class="article-list-item" onclick="openModal('midjourney'); return false;">
+          <div class="list-num">04</div>
+          <div class="list-content">
+            <div class="list-cat">Tutorial • Iniciante</div>
+            <div class="list-title">Midjourney em português: crie imagens incríveis com descrições simples</div>
+            <div class="list-meta">📖 7 min · 🔥 6.3k leituras</div>
+          </div>
+        </a>
+        <a href="#" class="article-list-item" onclick="openModal('vender'); return false;">
+          <div class="list-num">05</div>
+          <div class="list-content">
+            <div class="list-cat">Estratégia • Negócios</div>
+            <div class="list-title">Como vender serviços de IA para pequenas empresas brasileiras</div>
+            <div class="list-meta">📖 9 min · 🔥 5.9k leituras</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar">
+
+    <!-- Ad Rectangle -->
+    <div class="ad-banner ad-rectangle" id="ad-sidebar-1">
+      📢 300×250<br>AdSense
+    </div>
+
+    <!-- Trending -->
+    <div class="sidebar-widget">
+      <div class="widget-title">🔥 Mais lidos hoje</div>
+      <div class="trending-list">
+        <a href="#" class="trending-item" onclick="openModal('gemini'); return false;">
+          <span class="trend-rank">01</span>
+          <span class="trend-title">Como o Gemini 2.0 mudou meu fluxo de trabalho</span>
+        </a>
+        <a href="#" class="trending-item" onclick="openModal('concurso'); return false;">
+          <span class="trend-rank">02</span>
+          <span class="trend-title">IA para concurso público: funciona mesmo?</span>
+        </a>
+        <a href="#" class="trending-item" onclick="openModal('profissoes'); return false;">
+          <span class="trend-rank">03</span>
+          <span class="trend-title">10 profissões que a IA está transformando no Brasil</span>
+        </a>
+        <a href="#" class="trending-item" onclick="openModal('chatgpt5'); return false;">
+          <span class="trend-rank">04</span>
+          <span class="trend-title">ChatGPT grátis vs pago: vale a pena?</span>
+        </a>
+        <a href="#" class="trending-item" onclick="openModal('ebook'); return false;">
+          <span class="trend-rank">05</span>
+          <span class="trend-title">Como criar um ebook com IA em 2 horas</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter" id="newsletter">
+      <h3>📬 IA na sua caixa de entrada</h3>
+      <p>Receba todo dia as melhores dicas, ferramentas e oportunidades de ganho com IA. Grátis.</p>
+      <div class="nl-form">
+        <input type="email" class="nl-input" placeholder="seu@email.com">
+        <button class="nl-btn">Quero receber →</button>
+      </div>
+    </div>
+
+    <!-- Ad Rectangle 2 -->
+    <div class="ad-banner ad-rectangle" id="ad-sidebar-2">
+      📢 300×250<br>AdSense
+    </div>
+
+    <!-- Categories -->
+    <div class="sidebar-widget">
+      <div class="widget-title">📂 Categorias</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="#ferramentas" style="background:rgba(0,229,255,0.1); color:var(--accent); border:1px solid rgba(0,229,255,0.2); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Ferramentas</a>
+        <a href="#" onclick="openModal('ganhar'); return false;" style="background:rgba(255,60,172,0.1); color:var(--accent2); border:1px solid rgba(255,60,172,0.2); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Ganhar com IA</a>
+        <a href="#tutoriais" style="background:rgba(123,47,255,0.1); color:#b39dff; border:1px solid rgba(123,47,255,0.2); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Tutoriais</a>
+        <a href="#" onclick="openModal('lei'); return false;" style="background:rgba(255,217,61,0.1); color:#ffd93d; border:1px solid rgba(255,217,61,0.2); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Notícias</a>
+        <a href="#" onclick="openModal('vender'); return false;" style="background:rgba(255,255,255,0.06); color:var(--text); border:1px solid rgba(255,255,255,0.1); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Negócios</a>
+        <a href="#" onclick="openModal('midjourney'); return false;" style="background:rgba(255,255,255,0.06); color:var(--text); border:1px solid rgba(255,255,255,0.1); padding:5px 12px; border-radius:999px; font-size:0.78rem; text-decoration:none; font-weight:500;">Criatividade</a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <!-- Footer Ad -->
+  <div style="text-align:center; margin-bottom:32px;">
+    <div class="ad-banner ad-leaderboard" id="ad-footer">
+      📢 Anúncio 728×90 — Google AdSense (Footer)
+    </div>
+  </div>
+
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="margin-bottom:4px; display:inline-flex;">
+        <div class="logo-dot"></div> IA Hoje
+      </a>
+      <p>O portal brasileiro de Inteligência Artificial. Conteúdo prático e atualizado para quem quer usar IA de verdade.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Conteúdo</h4>
+      <a href="#artigos">Artigos</a>
+      <a href="#tutoriais">Tutoriais</a>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#" onclick="openModal('chatgpt5'); return false;">Comparativos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categorias</h4>
+      <a href="#" onclick="openModal('ganhar'); return false;">Ganhar com IA</a>
+      <a href="#" onclick="openModal('automacao'); return false;">Produtividade</a>
+      <a href="#" onclick="openModal('midjourney'); return false;">Criatividade</a>
+      <a href="#" onclick="openModal('vender'); return false;">Negócios</a>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <a href="https://www.google.com/adsense" target="_blank" rel="noopener">Sobre nós</a>
+      <a href="https://www.google.com/adsense" target="_blank" rel="noopener">Anuncie aqui</a>
+      <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">Política de privacidade</a>
+      <a href="mailto:contato@iahoje.com.br">Contato</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 IA Hoje. Todos os direitos reservados.</span>
+    <span>Feito com IA 🤖</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════ MODAL ═══════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-header" id="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <span id="modal-emoji">📰</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modal-tag"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── ARTICLE DATA ──────────────────────────────────────────
+const articles = {
+  ganhar: {
+    emoji: '💰', tag: 'Ganhar com IA', grad: 'linear-gradient(135deg,#0d1b3e,#001f5b)',
+    title: '10 formas de ganhar dinheiro com IA em 2026 (testadas)',
+    meta: '📖 8 min de leitura · 🕐 Hoje · 👤 Redação IA Hoje',
+    cta: { label: 'Ver ferramentas gratuitas →', url: 'https://claude.ai' },
+    content: `
+      <p>A Inteligência Artificial abriu uma janela de oportunidade que muita gente ainda não viu. No Brasil, já existem pessoas faturando entre R$3.000 e R$15.000 por mês usando ferramentas que qualquer um pode acessar hoje.</p>
+      <h3>1. Redação e copywriting com IA</h3>
+      <p>Plataformas como Workana e 99Freelas estão cheias de pedidos para criação de textos. Use ChatGPT ou Claude para produzir 5x mais rápido e cobrar mais barato que a concorrência — mantendo sua margem.</p>
+      <h3>2. Criação de imagens para redes sociais</h3>
+      <p>Pequenas empresas precisam de conteúdo visual todo dia. Com Midjourney ou Leonardo AI, você entrega pacotes de 30 posts por R$500–R$1.500/mês por cliente.</p>
+      <h3>3. Narração e dublagem com ElevenLabs</h3>
+      <p>Criadores de cursos, podcasts e vídeos no YouTube pagam bem por narrações profissionais. ElevenLabs gera vozes realistas em português — você pode oferecer esse serviço como freelancer.</p>
+      <h3>4. Automação de processos para empresas</h3>
+      <p>Muitas empresas ainda fazem tarefas manuais que a IA resolve em segundos. Ofereça consultoria de automação com ferramentas como Make.com + ChatGPT.</p>
+      <h3>5. Criação e venda de ebooks</h3>
+      <p>Um ebook de nicho bem produzido com IA pode ser vendido na Hotmart ou Kiwify por R$27–R$97. Com boa capa e marketing, dá para gerar renda passiva.</p>
+      <h3>6. Canais no YouTube com IA</h3>
+      <p>Canais "faceless" (sem mostrar o rosto) usando roteiros escritos por IA, imagens do Midjourney e narração do ElevenLabs já monetizam milhares de reais por mês no AdSense.</p>
+      <h3>7. Tradução e localização</h3>
+      <p>Use DeepL + Claude para revisar traduções técnicas. A IA faz 90% do trabalho, você refina — e cobra como tradutor humano.</p>
+      <h3>8. Criação de sites e landing pages</h3>
+      <p>Com ferramentas como Framer AI ou Wix AI, você cria sites em horas e cobra por projeto. Mercado enorme para pequenos negócios brasileiros.</p>
+      <h3>9. Consultoria de prompts (Prompt Engineering)</h3>
+      <p>Empresas pagam para aprender a usar IA melhor. Venda workshops, mentorias ou pacotes de prompts personalizados para o segmento da empresa.</p>
+      <h3>10. Infoprodutos sobre IA</h3>
+      <p>O tema "como usar IA" é um dos mais vendidos no Brasil agora. Crie um curso básico, uma mentoria ou um grupo no WhatsApp/Telegram com conteúdo exclusivo.</p>
+    `
+  },
+  chatgpt5: {
+    emoji: '🤖', tag: 'Ferramentas', grad: 'linear-gradient(135deg,#1a0a2e,#3b0d6e)',
+    title: 'ChatGPT-5: o que mudou e o que você precisa saber',
+    meta: '📖 6 min de leitura · 🕐 2 dias atrás · 👤 Redação IA Hoje',
+    cta: { label: 'Acessar o ChatGPT →', url: 'https://chat.openai.com' },
+    content: `
+      <p>A OpenAI lançou o GPT-5 com melhorias significativas em raciocínio, memória de longo prazo e capacidade multimodal. Mas o que isso significa na prática para o usuário brasileiro?</p>
+      <h3>O que mudou de verdade</h3>
+      <p>O GPT-5 é substancialmente melhor em tarefas que exigem raciocínio encadeado — como resolver problemas complexos de matemática, analisar contratos longos e gerar código mais robusto sem erros.</p>
+      <h3>Memória entre conversas</h3>
+      <p>Uma das novidades mais úteis: o modelo agora pode lembrar de preferências e contextos de conversas anteriores, tornando-o mais parecido com um assistente pessoal de verdade.</p>
+      <h3>Multimodalidade avançada</h3>
+      <p>Além de imagens, o GPT-5 processa áudio e vídeo com muito mais precisão. Isso abre possibilidades para análise de reuniões gravadas, legendagem automática e muito mais.</p>
+      <h3>Vale a pena assinar o Plus?</h3>
+      <p>O plano gratuito ainda oferece acesso ao GPT-4o. O Plus (US$ 20/mês) libera o GPT-5 com limites maiores de uso. Para uso profissional, o investimento se paga rápido.</p>
+      <h3>Comparação rápida: GPT-5 vs Claude vs Gemini</h3>
+      <ul>
+        <li><strong>GPT-5:</strong> Melhor em código e raciocínio lógico</li>
+        <li><strong>Claude:</strong> Melhor para documentos longos e análise de texto</li>
+        <li><strong>Gemini:</strong> Melhor integração com o ecossistema Google</li>
+      </ul>
+    `
+  },
+  prompts: {
+    emoji: '🎯', tag: 'Tutorial', grad: 'linear-gradient(135deg,#0d2e20,#0a3d2e)',
+    title: 'Como criar prompts perfeitos: guia definitivo',
+    meta: '📖 12 min de leitura · 🕐 3 dias atrás · 👤 Redação IA Hoje',
+    cta: { label: 'Testar no Claude →', url: 'https://claude.ai' },
+    content: `
+      <p>A qualidade da sua saída de IA depende 80% da qualidade do seu prompt. Aprenda as técnicas que os profissionais usam e que ninguém está ensinando de graça.</p>
+      <h3>1. Seja específico sobre o contexto</h3>
+      <p>Em vez de "escreva um e-mail", escreva: "Você é um vendedor de software B2B. Escreva um e-mail de follow-up para um gerente de TI que não respondeu minha proposta há 5 dias. Tom: profissional mas amigável."</p>
+      <h3>2. Defina o formato de saída</h3>
+      <p>Peça explicitamente o formato: "Responda em tópicos", "Use tabela", "Máximo 200 palavras", "Use linguagem simples para leigos".</p>
+      <h3>3. Dê exemplos (few-shot)</h3>
+      <p>Mostrar 2-3 exemplos do que você quer é a técnica mais poderosa. "Aqui está um exemplo do estilo que quero: [exemplo]. Agora faça o mesmo para..."</p>
+      <h3>4. Use papéis (role prompting)</h3>
+      <p>"Aja como um especialista em marketing digital com 10 anos de experiência no mercado brasileiro" → a IA vai calibrar o conhecimento, o vocabulário e os exemplos para esse perfil.</p>
+      <h3>5. Peça raciocínio passo a passo</h3>
+      <p>Para problemas complexos, adicione "Pense passo a passo antes de responder" ou "Explique seu raciocínio". Isso melhora muito a precisão.</p>
+      <h3>6. Itere e refine</h3>
+      <p>Não espere o prompt perfeito na primeira vez. Peça a IA para melhorar a própria resposta: "O que você mudaria nessa resposta para torná-la mais persuasiva?"</p>
+    `
+  },
+  lei: {
+    emoji: '🚀', tag: 'Notícias', grad: 'linear-gradient(135deg,#2e1a00,#3d2600)',
+    title: 'IA no Brasil: o que muda com a nova regulamentação',
+    meta: '📖 5 min de leitura · 🕐 4 dias atrás · 👤 Redação IA Hoje',
+    cta: { label: 'Ver texto completo →', url: 'https://www.gov.br/anpd/pt-br' },
+    content: `
+      <p>O governo brasileiro anunciou as diretrizes para regulamentação de sistemas de inteligência artificial. A lei, inspirada no AI Act europeu, deve entrar em vigor ainda em 2026.</p>
+      <h3>O que a lei prevê</h3>
+      <p>A regulamentação classifica sistemas de IA por nível de risco: baixo, médio e alto. Sistemas de alto risco (como os usados em saúde, crédito e segurança pública) precisarão de certificação e auditoria periódica.</p>
+      <h3>O que muda para usuários comuns</h3>
+      <p>Para quem usa IA no dia a dia (ChatGPT, Claude, Gemini), praticamente nada muda. A regulamentação foca nas empresas que desenvolvem e implantam sistemas de IA em contextos críticos.</p>
+      <h3>O que muda para empresas</h3>
+      <ul>
+        <li>Obrigação de explicar decisões automatizadas que afetam cidadãos</li>
+        <li>Proibição de sistemas de vigilância em massa sem autorização</li>
+        <li>Transparência sobre uso de dados em treinamento de modelos</li>
+        <li>Responsabilidade civil por danos causados por sistemas de IA</li>
+      </ul>
+      <h3>Oportunidade para o mercado</h3>
+      <p>A regulamentação abre um mercado enorme para consultores e advogados especializados em compliance de IA. Se você atua na área de tecnologia ou direito, esse é um nicho para ficar de olho.</p>
+    `
+  },
+  emails: {
+    emoji: '✉️', tag: 'Tutorial • Iniciante', grad: 'linear-gradient(135deg,#0a1a2e,#001433)',
+    title: 'Como usar o ChatGPT para escrever e-mails profissionais',
+    meta: '📖 5 min de leitura · 🔥 12.4k leituras',
+    cta: { label: 'Abrir o ChatGPT →', url: 'https://chat.openai.com' },
+    content: `
+      <p>Escrever e-mails profissionais consome tempo demais. Com o ChatGPT, você pode criar e-mails de alta qualidade em segundos — e ainda personalizar para cada situação.</p>
+      <h3>O prompt base</h3>
+      <p>Use esta estrutura: <em>"Escreva um e-mail [objetivo] para [destinatário]. Contexto: [situação]. Tom: [formal/informal/amigável]. Inclua: [pontos específicos]."</em></p>
+      <h3>Exemplos práticos</h3>
+      <p><strong>Follow-up de vendas:</strong> "Escreva um e-mail de follow-up para um cliente que pediu orçamento há 3 dias e não respondeu. Sou vendedor de software de gestão. Tom profissional mas direto."</p>
+      <p><strong>Solicitação de reunião:</strong> "E-mail solicitando uma reunião de 30 minutos com meu gestor para discutir aumento de salário. Tom respeitoso e confiante."</p>
+      <h3>Dicas de ouro</h3>
+      <ul>
+        <li>Sempre revise e personalize antes de enviar</li>
+        <li>Peça para a IA reescrever em tom diferente se necessário</li>
+        <li>Use "encurte para menos de 100 palavras" para e-mails mais diretos</li>
+        <li>Peça variações: "Me dê 3 versões diferentes"</li>
+      </ul>
+    `
+  },
+  automacao: {
+    emoji: '⚙️', tag: 'Tutorial • Intermediário', grad: 'linear-gradient(135deg,#1a0a2e,#3b0d6e)',
+    title: 'Automação com IA: economize 3 horas por dia no trabalho',
+    meta: '📖 10 min de leitura · 🔥 9.1k leituras',
+    cta: { label: 'Ver Make.com →', url: 'https://www.make.com' },
+    content: `
+      <p>Tarefas repetitivas drenam energia e tempo. Com as ferramentas certas de automação + IA, você pode recuperar horas do seu dia sem precisar saber programar.</p>
+      <h3>As melhores ferramentas de automação com IA</h3>
+      <ul>
+        <li><strong>Make.com (antigo Integromat):</strong> conecta apps e usa IA para processar dados</li>
+        <li><strong>Zapier + ChatGPT:</strong> automatiza fluxos com geração de texto</li>
+        <li><strong>n8n:</strong> open source, mais poderoso, requer conhecimento técnico básico</li>
+      </ul>
+      <h3>3 automações que salvam tempo todo dia</h3>
+      <p><strong>1. Triagem de e-mails:</strong> Gmail → Make → Claude → classifica e responde automaticamente e-mails simples.</p>
+      <p><strong>2. Resumo de reuniões:</strong> Gravação → Whisper (transcrição) → Claude → resumo com action items enviado por Slack ou e-mail.</p>
+      <p><strong>3. Geração de relatórios:</strong> Planilha com dados → Make → ChatGPT → relatório em PDF enviado por e-mail todo segunda-feira às 8h.</p>
+      <h3>Por onde começar</h3>
+      <p>Identifique a tarefa que você mais repete durante a semana e automatize ela primeiro. Pequenas vitórias criam momentum.</p>
+    `
+  },
+  agente: {
+    emoji: '🤖', tag: 'Tutorial • Avançado', grad: 'linear-gradient(135deg,#0d2e20,#0a3d2e)',
+    title: 'Crie um agente de IA personalizado (sem código)',
+    meta: '📖 15 min de leitura · 🔥 7.8k leituras',
+    cta: { label: 'Criar no Claude →', url: 'https://claude.ai' },
+    content: `
+      <p>Um agente de IA é um assistente treinado especificamente para o seu negócio — que conhece seus produtos, seu tom de voz e suas regras. E você não precisa saber programar para criar um.</p>
+      <h3>O que é um agente de IA</h3>
+      <p>Diferente de um chatbot genérico, um agente personalizado tem contexto, personalidade e instruções específicas. Ele age como um colaborador que conhece sua empresa profundamente.</p>
+      <h3>Ferramentas sem código para criar agentes</h3>
+      <ul>
+        <li><strong>Claude Projects:</strong> crie projetos com documentos da sua empresa — o Claude responde com base neles</li>
+        <li><strong>ChatGPT GPTs:</strong> crie GPTs personalizados e publique para clientes</li>
+        <li><strong>Voiceflow:</strong> crie agentes conversacionais com interface visual</li>
+        <li><strong>Botpress:</strong> ótimo para atendimento ao cliente</li>
+      </ul>
+      <h3>Passo a passo básico no Claude Projects</h3>
+      <p>1. Crie um novo Projeto no Claude · 2. Faça upload dos seus documentos (FAQ, catálogo, manual) · 3. Escreva as instruções de personalidade e tom · 4. Teste com perguntas reais dos seus clientes · 5. Ajuste e refine.</p>
+    `
+  },
+  midjourney: {
+    emoji: '🎨', tag: 'Tutorial • Iniciante', grad: 'linear-gradient(135deg,#2e0d1a,#3d0a1f)',
+    title: 'Midjourney em português: guia completo para iniciantes',
+    meta: '📖 7 min de leitura · 🔥 6.3k leituras',
+    cta: { label: 'Acessar Midjourney →', url: 'https://www.midjourney.com' },
+    content: `
+      <p>O Midjourney é a ferramenta de geração de imagens mais impressionante disponível hoje. Com ele, você transforma descrições em texto em imagens profissionais em segundos.</p>
+      <h3>Como acessar</h3>
+      <p>O Midjourney funciona pelo Discord. Acesse discord.gg/midjourney, entre em qualquer canal #newbies e use o comando <code>/imagine</code> seguido da sua descrição.</p>
+      <h3>Estrutura de um bom prompt</h3>
+      <p><em>[Assunto] + [Estilo] + [Iluminação] + [Composição] + [Parâmetros]</em></p>
+      <p>Exemplo: "Brazilian entrepreneur woman, working on laptop in modern cafe, golden hour lighting, editorial photography style, --ar 16:9 --v 6"</p>
+      <h3>Parâmetros essenciais</h3>
+      <ul>
+        <li><strong>--ar 16:9:</strong> proporção (16:9 para paisagem, 9:16 para stories, 1:1 para quadrado)</li>
+        <li><strong>--v 6:</strong> versão mais recente do modelo</li>
+        <li><strong>--q 2:</strong> qualidade máxima</li>
+        <li><strong>--style raw:</strong> menos interferência artística, mais fotorrealismo</li>
+      </ul>
+      <h3>Estilos populares para negócios</h3>
+      <p>Para marketing: "product photography, white background, studio lighting". Para redes sociais: "flat design illustration, vibrant colors, minimal". Para apresentações: "infographic style, clean, professional".</p>
+    `
+  },
+  vender: {
+    emoji: '💼', tag: 'Estratégia • Negócios', grad: 'linear-gradient(135deg,#0d1b3e,#001f5b)',
+    title: 'Como vender serviços de IA para empresas brasileiras',
+    meta: '📖 9 min de leitura · 🔥 5.9k leituras',
+    cta: { label: 'Ver oportunidades →', url: 'https://www.workana.com/pt' },
+    content: `
+      <p>O mercado de serviços de IA para pequenas e médias empresas brasileiras está em expansão acelerada — e ainda tem pouquíssima oferta qualificada.</p>
+      <h3>Qual serviço vender</h3>
+      <ul>
+        <li><strong>Automação de atendimento:</strong> chatbots e agentes para WhatsApp</li>
+        <li><strong>Criação de conteúdo:</strong> posts, e-mails e artigos em escala</li>
+        <li><strong>Análise de dados:</strong> relatórios e insights automáticos</li>
+        <li><strong>Treinamento em IA:</strong> workshops para equipes</li>
+      </ul>
+      <h3>Como precificar</h3>
+      <p>Não venda horas — venda resultado. "Reduzo seu tempo de criação de conteúdo em 70%" vale mais do que "sou freelancer de IA".</p>
+      <p>Preços praticáveis no Brasil: chatbot básico (R$1.500–R$5.000), gestão de conteúdo mensal (R$800–R$3.000), workshop de 4h (R$500–R$2.000 por participante).</p>
+      <h3>Como encontrar clientes</h3>
+      <p>LinkedIn é a melhor plataforma B2B no Brasil. Publique cases reais (mesmo que gratuitos para começar), use hashtags como #InteligenciaArtificial e #AutomacaoEmpresarial, e entre em grupos de empreendedores.</p>
+      <h3>Dica de ouro</h3>
+      <p>Ofereça um diagnóstico gratuito de 30 minutos. Mostre onde a IA pode economizar tempo ou dinheiro na empresa. A venda vem naturalmente depois.</p>
+    `
+  },
+  gemini: {
+    emoji: '🌟', tag: 'Ferramentas', grad: 'linear-gradient(135deg,#0a1a2e,#001433)',
+    title: 'Como o Gemini 2.0 mudou meu fluxo de trabalho',
+    meta: '📖 6 min de leitura · 🔥 Mais lido hoje',
+    cta: { label: 'Testar o Gemini →', url: 'https://gemini.google.com' },
+    content: `
+      <p>O Gemini 2.0 chegou integrado a todo o ecossistema Google — e para quem usa Google Workspace, é uma mudança de patamar na produtividade.</p>
+      <h3>O que melhorou no Gemini 2.0</h3>
+      <p>Raciocínio mais profundo, capacidade de processar documentos maiores e integração nativa com Google Drive, Gmail, Docs e Sheets. O "Deep Research" pode pesquisar e gerar relatórios completos em minutos.</p>
+      <h3>Como uso no dia a dia</h3>
+      <ul>
+        <li>Resumo automático de e-mails longos no Gmail</li>
+        <li>Análise de planilhas diretamente no Sheets</li>
+        <li>Pesquisa aprofundada com o modo "Deep Research"</li>
+        <li>Geração de apresentações a partir de documentos</li>
+      </ul>
+      <h3>Quando usar Gemini vs ChatGPT vs Claude</h3>
+      <p>Use <strong>Gemini</strong> quando precisar de integração com Google ou pesquisa atualizada. Use <strong>ChatGPT</strong> para código e criatividade geral. Use <strong>Claude</strong> para documentos longos e análise precisa.</p>
+    `
+  },
+  concurso: {
+    emoji: '📚', tag: 'Produtividade', grad: 'linear-gradient(135deg,#0d2e20,#0a3d2e)',
+    title: 'IA para concurso público: funciona mesmo?',
+    meta: '📖 7 min de leitura · 🔥 Em alta',
+    cta: { label: 'Experimentar grátis →', url: 'https://claude.ai' },
+    content: `
+      <p>Sim, funciona — mas com ressalvas importantes. A IA pode ser uma aliada poderosa nos estudos para concursos, desde que usada do jeito certo.</p>
+      <h3>O que a IA faz bem para concurseiros</h3>
+      <ul>
+        <li>Explicar conceitos jurídicos, econômicos ou técnicos de forma simples</li>
+        <li>Criar questões de treino personalizadas</li>
+        <li>Resumir leis, decretos e normativas extensas</li>
+        <li>Corrigir e explicar onde você errou em questões dissertativas</li>
+        <li>Criar cronogramas de estudo personalizados</li>
+      </ul>
+      <h3>O que a IA NÃO faz (ainda)</h3>
+      <p>A IA pode ter informações desatualizadas sobre legislação recente. Sempre verifique a data de vigência de leis e a letra fria do texto legal antes de confiar 100%.</p>
+      <h3>Prompt ideal para estudar</h3>
+      <p>"Você é professor de Direito Administrativo para concursos federais. Explique o princípio da legalidade de forma simples, com exemplos práticos, e depois me faça 3 questões no estilo CESPE."</p>
+    `
+  },
+  profissoes: {
+    emoji: '👔', tag: 'Mercado de Trabalho', grad: 'linear-gradient(135deg,#1a0a2e,#3b0d6e)',
+    title: '10 profissões que a IA está transformando no Brasil',
+    meta: '📖 8 min de leitura · 🔥 Em alta',
+    cta: { label: 'Como se adaptar →', url: 'https://claude.ai' },
+    content: `
+      <p>A IA não vai substituir profissões — vai substituir profissionais que não usam IA. Veja quais áreas estão mudando mais rápido e como se posicionar.</p>
+      <h3>Profissões em transformação</h3>
+      <ul>
+        <li><strong>Designer gráfico:</strong> IA gera imagens, mas designers que usam IA entregam 10x mais</li>
+        <li><strong>Redator/copywriter:</strong> quem domina prompts está mais valorizado, não menos</li>
+        <li><strong>Programador:</strong> GitHub Copilot aumentou produtividade em 55% (pesquisa GitHub)</li>
+        <li><strong>Tradutor:</strong> revisão e pós-edição de traduções automáticas virou nova especialidade</li>
+        <li><strong>Contador:</strong> análise financeira automatizada — sobra tempo para consultoria estratégica</li>
+        <li><strong>Advogado:</strong> pesquisa jurisprudencial e contratos — IA ajuda a triagem</li>
+        <li><strong>Médico:</strong> diagnóstico assistido por imagem está se tornando padrão</li>
+        <li><strong>Professor:</strong> personalização do ensino com IA é o futuro da educação</li>
+        <li><strong>Jornalista:</strong> automação de notícias rotineiras, curadoria e investigação manual ganham espaço</li>
+        <li><strong>Atendimento ao cliente:</strong> agentes IA lidam com o simples, humanos com o complexo</li>
+      </ul>
+      <h3>A conclusão</h3>
+      <p>A melhor proteção de carreira hoje é se tornar o profissional que sabe usar IA melhor do que qualquer outro na sua área.</p>
+    `
+  },
+  ebook: {
+    emoji: '📗', tag: 'Ganhar com IA', grad: 'linear-gradient(135deg,#2e1a00,#3d2600)',
+    title: 'Como criar um ebook com IA em 2 horas e vender no automático',
+    meta: '📖 6 min de leitura · 🔥 Em alta',
+    cta: { label: 'Publicar na Hotmart →', url: 'https://www.hotmart.com' },
+    content: `
+      <p>Ebooks de nicho são uma das formas mais simples de renda passiva — e com IA, o tempo de produção caiu de semanas para horas.</p>
+      <h3>Passo 1: Escolha o nicho (15 min)</h3>
+      <p>Nichos que vendem bem: finanças pessoais, emagrecimento, relacionamentos, concursos, marketing digital, culinária específica (low carb, fit, etc.), produtividade.</p>
+      <h3>Passo 2: Gere o conteúdo (60 min)</h3>
+      <p>Prompt: "Crie um ebook de 30 páginas sobre [tema] para [público-alvo]. Inclua introdução, 5 capítulos com subtítulos, exercícios práticos e conclusão. Tom: acessível e motivador."</p>
+      <p>Use Claude para textos mais longos — ele mantém coerência em documentos extensos.</p>
+      <h3>Passo 3: Design (30 min)</h3>
+      <p>Use Canva (gratuito) com um template de ebook. Adicione sua capa gerada pelo Midjourney. Exporte em PDF.</p>
+      <h3>Passo 4: Publique e venda</h3>
+      <p>Hotmart e Kiwify são as melhores plataformas brasileiras. Configure preço entre R$27–R$67 para ebooks iniciantes. Use afiliados para distribuição automática.</p>
+    `
+  }
+};
+
+// ── MODAL FUNCTIONS ───────────────────────────────────────
+function openModal(id) {
+  const art = articles[id];
+  if (!art) return;
+  document.getElementById('modal-emoji').textContent = art.emoji;
+  document.getElementById('modal-header').style.background = art.grad;
+  document.getElementById('modal-tag').textContent = art.tag;
+  document.getElementById('modal-title').textContent = art.title;
+  document.getElementById('modal-meta').textContent = art.meta;
+  document.getElementById('modal-content').innerHTML = art.content +
+    `<a href="${art.cta.url}" target="_blank" rel="noopener" class="modal-cta-btn">${art.cta.label}</a>`;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── NEWSLETTER ────────────────────────────────────────────
+function showToast(msg, color) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = color || 'rgba(0,229,255,0.4)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+document.querySelectorAll('.nl-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = btn.previousElementSibling;
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      showToast('⚠️ Digite um e-mail válido', 'rgba(255,60,172,0.5)');
+      return;
+    }
+    input.value = '';
+    showToast('✅ Inscrito! Fique de olho na sua caixa de entrada 📬', 'rgba(0,229,255,0.4)');
+  });
+});
+
+// ── FEATURED CARD click ────────────────────────────────────
+document.querySelector('.featured-article')?.addEventListener('click', () => openModal('chatgpt5'));
+document.querySelector('.featured-article').style.cursor = 'pointer';
+</script>
+</body>
+</html>
